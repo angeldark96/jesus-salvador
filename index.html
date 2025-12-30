@@ -8,10 +8,10 @@
     <!-- IMPORTANTE: Se requiere internet para que carguen estos estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fuentes Google -->
+    <!-- Fuentes Google (Añadida Great Vibes para estilo Floristería) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -23,6 +23,7 @@
         /* Configuración de Fuentes Personalizadas */
         .font-serif { font-family: 'Playfair Display', serif; }
         .font-sans { font-family: 'Manrope', sans-serif; }
+        .font-handwriting { font-family: 'Great Vibes', cursive; } /* Nueva clase para estilo Floristería */
         
         /* Animaciones */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -65,6 +66,15 @@
         }
         .tab-content.active {
             display: grid;
+        }
+
+        /* Estilos Carrusel Floristería */
+        .scrolling-wrapper {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        .scrolling-wrapper::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>
@@ -422,63 +432,17 @@
         </div>
     </footer>
 
-    <!-- MODAL GRIEF (ASISTENTE DUELO) -->
-    <div id="griefModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 hidden">
-        <div class="bg-white w-full max-w-md h-[600px] flex flex-col shadow-2xl border-t-4 border-amber-600 animate-scale-up">
-            <div class="p-6 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
-                <h3 class="font-serif italic text-lg text-slate-800">Consejero IA</h3>
-                <button onclick="closeModal('griefModal')" class="text-slate-400 hover:text-slate-900"><i data-lucide="x" class="w-5 h-5"></i></button>
-            </div>
-            <div id="griefChatContainer" class="flex-1 p-6 overflow-y-auto space-y-4 bg-white">
-                <div class="text-center py-10 opacity-50">
-                    <i data-lucide="heart" class="mx-auto mb-4 text-slate-300 w-8 h-8"></i>
-                    <p class="text-sm italic">"Estoy aquí para escucharte."</p>
-                </div>
-            </div>
-            <div class="p-4 border-t border-slate-100 flex gap-2">
-                <input id="griefInput" type="text" placeholder="Escribe aquí..." class="flex-1 bg-slate-50 px-4 py-2 text-sm outline-none focus:ring-1 focus:ring-amber-500 rounded" onkeypress="handleGriefInputKey(event)">
-                <button onclick="sendGriefMessage()" class="bg-slate-900 text-white p-2 rounded hover:bg-amber-600 transition-colors"><i data-lucide="send" class="w-4 h-4"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL TRIBUTE (HOMENAJE) -->
-    <div id="tributeModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 hidden">
-        <div class="bg-white w-full max-w-lg p-10 relative animate-scale-up shadow-2xl border-t-4 border-amber-600">
-            <button onclick="closeModal('tributeModal')" class="absolute top-4 right-4 text-slate-300 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h3 class="text-3xl font-serif text-slate-900 mb-2">Homenaje Solemne</h3>
-            <p class="text-slate-500 text-sm mb-8">IA redactará un tributo digno.</p>
-            
-            <div id="tributeForm" class="space-y-6">
-                <input id="tributeName" placeholder="Nombre del difunto" class="w-full border-b border-slate-200 py-3 outline-none focus:border-amber-600 transition-colors">
-                <input id="tributeTraits" placeholder="Virtudes (ej: bondad)" class="w-full border-b border-slate-200 py-3 outline-none focus:border-amber-600 transition-colors">
-                <textarea id="tributeLegacy" placeholder="Recuerdo especial" rows="2" class="w-full border-b border-slate-200 py-3 outline-none focus:border-amber-600 transition-colors resize-none"></textarea>
-                <button onclick="generateTribute()" class="w-full bg-slate-900 text-white py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors flex justify-center gap-2 items-center">
-                    <span id="tributeBtnText">Generar Texto</span>
-                </button>
-            </div>
-
-            <div id="tributeResult" class="bg-slate-50 p-8 border-l-4 border-amber-500 hidden mt-6">
-                <p id="tributeText" class="font-serif italic text-lg text-slate-800 leading-relaxed mb-6"></p>
-                <button onclick="resetTribute()" class="text-xs font-bold uppercase text-amber-600 hover:text-slate-900">Redactar otro</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL PLANES DETALLADOS (NUEVO) -->
+    <!-- MODAL PLANES DETALLADOS (FUNERARIOS) -->
     <div id="plansModal" class="fixed inset-0 z-[100] bg-slate-50 hidden overflow-y-auto animate-fade-in">
-        <!-- Close Button Top Right -->
         <button onclick="closePlansModal()" class="fixed top-6 right-6 z-50 p-3 bg-white rounded-full shadow-lg text-slate-800 hover:text-amber-600 transition-colors">
             <i data-lucide="x" class="w-6 h-6"></i>
         </button>
 
-        <!-- Header -->
         <div class="pt-20 pb-10 text-center container mx-auto px-6">
             <span class="text-amber-600 font-bold uppercase tracking-[0.2em] text-xs block mb-3">Nuestra Propuesta de Valor</span>
             <h2 class="text-4xl lg:text-5xl font-serif text-slate-900">Planes Exequiales</h2>
         </div>
 
-        <!-- Tabs Navigation -->
         <div class="sticky top-0 bg-slate-50/95 backdrop-blur-md z-40 border-b border-slate-200">
             <div class="flex justify-center gap-8 md:gap-16 pt-4 pb-0">
                 <button onclick="switchTab('basic')" id="tab-basic" class="tab-btn active pb-4 text-sm font-bold uppercase tracking-widest text-amber-600 border-b-2 border-amber-600 transition-all">Básico</button>
@@ -487,9 +451,7 @@
             </div>
         </div>
 
-        <!-- Content Container -->
         <div class="container mx-auto px-6 py-12 lg:py-20 max-w-6xl">
-            
             <!-- PLAN BÁSICO -->
             <div id="content-basic" class="tab-content grid lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1 animate-scale-up">
@@ -549,7 +511,121 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-amber-900/40 to-transparent"></div>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <!-- MODAL PLANES CREMATORIO (NUEVO) -->
+    <div id="cremationModal" class="fixed inset-0 z-[100] bg-slate-50 hidden overflow-y-auto animate-fade-in">
+        <button onclick="closeCremationModal()" class="fixed top-6 right-6 z-50 p-3 bg-white rounded-full shadow-lg text-slate-800 hover:text-amber-600 transition-colors">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <div class="pt-20 pb-10 text-center container mx-auto px-6">
+            <span class="text-amber-600 font-bold uppercase tracking-[0.2em] text-xs block mb-3">Eternidad Ecológica</span>
+            <h2 class="text-4xl lg:text-5xl font-serif text-slate-900">Planes de Cremación</h2>
+        </div>
+
+        <div class="sticky top-0 bg-slate-50/95 backdrop-blur-md z-40 border-b border-slate-200">
+            <div class="flex justify-center gap-8 md:gap-16 pt-4 pb-0">
+                <button onclick="switchCremationTab('eco')" id="tab-eco" class="tab-btn active pb-4 text-sm font-bold uppercase tracking-widest text-amber-600 border-b-2 border-amber-600 transition-all">Económico</button>
+                <button onclick="switchCremationTab('pref')" id="tab-pref" class="tab-btn pb-4 text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-slate-600 transition-all">Preferencial</button>
+                <button onclick="switchCremationTab('luxe')" id="tab-luxe" class="tab-btn pb-4 text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-slate-600 transition-all">Lujo</button>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 py-12 lg:py-20 max-w-6xl">
+            <!-- PLAN ECONÓMICO -->
+            <div id="content-eco" class="tab-content grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 animate-scale-up">
+                    <h3 class="text-3xl font-serif text-slate-900 mb-6">Plan Paz</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8">Un servicio directo y respetuoso que cubre el proceso esencial de cremación con dignidad y eficiencia.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Cremación certificada ecológica</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Urna de cenizas básica (madera/metal)</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Trámites legales de defunción</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Traslado local del cuerpo</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Entrega de cenizas en 24-48 horas</li>
+                    </ul>
+                    <a href="#contacto" onclick="closeCremationModal()" class="inline-block mt-10 bg-slate-900 text-white px-8 py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors">Cotizar Plan Paz</a>
+                </div>
+                <div class="order-1 lg:order-2 h-[400px] lg:h-[500px] rounded-sm overflow-hidden shadow-2xl animate-scale-up delay-100">
+                    <img src="https://images.unsplash.com/photo-1596706939989-b003a097d74b?q=80&w=1000" class="w-full h-full object-cover grayscale" alt="Plan Económico">
+                </div>
+            </div>
+
+            <!-- PLAN PREFERENCIAL -->
+            <div id="content-pref" class="tab-content hidden grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 animate-scale-up">
+                    <h3 class="text-3xl font-serif text-slate-900 mb-6">Plan Memoria</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8">Diseñado para brindar un espacio de despedida íntimo y solemne antes de la cremación, con detalles de mayor calidad.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Urna de mármol o madera fina</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Sala de espera privada para familia directa</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Ceremonia de despedida (30 min)</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Arreglo floral sobre el cofre</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Certificado de cremación en carpeta de lujo</li>
+                    </ul>
+                    <a href="#contacto" onclick="closeCremationModal()" class="inline-block mt-10 bg-slate-900 text-white px-8 py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors">Cotizar Plan Memoria</a>
+                </div>
+                <div class="order-1 lg:order-2 h-[400px] lg:h-[500px] rounded-sm overflow-hidden shadow-2xl animate-scale-up delay-100">
+                    <img src="https://images.unsplash.com/photo-1626296316744-550993043817?q=80&w=1000" class="w-full h-full object-cover grayscale opacity-90" alt="Plan Preferencial">
+                </div>
+            </div>
+
+            <!-- PLAN LUJO -->
+            <div id="content-luxe" class="tab-content hidden grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 animate-scale-up">
+                    <div class="inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-3 py-1 mb-4 uppercase tracking-widest">Exclusivo</div>
+                    <h3 class="text-3xl font-serif text-slate-900 mb-6">Plan Eternidad</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8">Nuestro servicio más completo de cremación, ofreciendo una experiencia de homenaje total, velación previa y urna de alta gama.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="star" class="w-5 h-5 text-amber-500 fill-amber-500"></i> Urna Biodegradable o Diseño Exclusivo</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Sala de velación previa (4 horas)</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Video homenaje a la vida</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Servicio de cafetería premium</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Entrega de cenizas a domicilio</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Relicarios para familiares</li>
+                    </ul>
+                    <a href="#contacto" onclick="closeCremationModal()" class="inline-block mt-10 bg-amber-600 text-white px-8 py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-700 transition-colors shadow-lg shadow-amber-600/30">Solicitar Eternidad</a>
+                </div>
+                <div class="order-1 lg:order-2 h-[400px] lg:h-[500px] rounded-sm overflow-hidden shadow-2xl animate-scale-up delay-100 relative">
+                    <img src="https://images.unsplash.com/photo-1549449856-114400a40239?q=80&w=1000" class="w-full h-full object-cover" alt="Plan Lujo">
+                    <div class="absolute inset-0 bg-gradient-to-t from-amber-900/20 to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FLORISTERÍA (NUEVO - Fondo Claro) -->
+    <div id="floristModal" class="fixed inset-0 z-[100] bg-slate-50 hidden overflow-y-auto animate-fade-in">
+        <button onclick="closeFloristModal()" class="fixed top-6 right-6 z-50 p-3 bg-white rounded-full shadow-lg text-slate-800 hover:text-amber-600 transition-colors">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <div class="container mx-auto px-6 py-20">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-600 font-bold uppercase tracking-[0.2em] text-xs block mb-4">Arte Floral Fúnebre</span>
+                <h2 class="text-4xl lg:text-6xl font-serif text-slate-900 mb-8">Expresa lo Inexpresable</h2>
+                <p class="text-slate-600 text-lg leading-relaxed font-light">
+                    Las flores son el lenguaje del alma cuando las palabras faltan. Nuestros arreglos florales exclusivos están diseñados para transmitir amor, respeto y paz eterna, honrando la memoria de quien parte con la belleza de la naturaleza.
+                </p>
+            </div>
+
+            <!-- Carrusel Container -->
+            <div class="relative group">
+                <!-- Botones de Navegación -->
+                <button onclick="scrollFlorist(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-4 bg-white/80 hover:bg-amber-600 text-slate-900 hover:text-white rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg backdrop-blur">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button onclick="scrollFlorist(1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-4 bg-white/80 hover:bg-amber-600 text-slate-900 hover:text-white rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-lg backdrop-blur">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+
+                <!-- Scroll Wrapper -->
+                <div id="floristCarousel" class="scrolling-wrapper flex gap-6 overflow-x-auto pb-10 snap-x snap-mandatory">
+                    <!-- Cards serán inyectadas por JS -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -557,7 +633,7 @@
     <script>
         const apiKey = ""; 
 
-        // --- SERVICES DATA (MODIFICADO para incluir ID) ---
+        // --- SERVICES DATA (UPDATED) ---
         const servicesData = [
             { id: "funerarios", title: "Servicios Funerarios", icon: "heart", desc: "Atención inmediata las 24 horas en todo Huaral." },
             { id: "crematorio", title: "Crematorio Ecológico", icon: "flower-2", desc: "Procesos respetuosos con entrega de urna." },
@@ -572,10 +648,14 @@
             const el = document.createElement('div');
             el.className = "group relative bg-slate-900 border border-white/5 p-10 hover:border-amber-500/50 transition-all duration-500 hover:-translate-y-2 rounded-sm flex flex-col";
             
-            // Si es Servicios Funerarios, añadir botón especial
+            // Botones personalizados por servicio
             let actionHtml = '';
             if (s.id === 'funerarios') {
                 actionHtml = `<button onclick="openPlansModal()" class="mt-auto pt-6 text-amber-500 font-bold uppercase tracking-widest text-[10px] flex items-center gap-2 group-hover:text-white transition-colors">VER PLANES <i data-lucide="arrow-right" class="w-4 h-4"></i></button>`;
+            } else if (s.id === 'crematorio') {
+                actionHtml = `<button onclick="openCremationModal()" class="mt-auto pt-6 text-amber-500 font-bold uppercase tracking-widest text-[10px] flex items-center gap-2 group-hover:text-white transition-colors">VER PLANES <i data-lucide="arrow-right" class="w-4 h-4"></i></button>`;
+            } else if (s.id === 'floristeria') {
+                actionHtml = `<button onclick="openFloristModal()" class="mt-auto pt-6 text-amber-500 font-bold uppercase tracking-widest text-[10px] flex items-center gap-2 group-hover:text-white transition-colors">VER CATÁLOGO <i data-lucide="arrow-right" class="w-4 h-4"></i></button>`;
             } else {
                 actionHtml = `<div class="w-12 h-[1px] bg-slate-700 group-hover:w-full group-hover:bg-amber-500 transition-all duration-500 mt-auto"></div>`;
             }
@@ -589,6 +669,34 @@
                 ${actionHtml}
             `;
             servicesContainer.appendChild(el);
+        });
+
+        // --- FLORIST CAROUSEL DATA (UPDATED STYLES) ---
+        const floristItems = [
+            { title: "Coronas Fúnebres", img: "https://images.unsplash.com/photo-1596706939989-b003a097d74b?q=80&w=600" }, // Placeholder
+            { title: "Lágrimas", img: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=600" },
+            { title: "Lágrimas en Pedestal", img: "https://images.unsplash.com/photo-1563241527-3004b7be0fee?q=80&w=600" },
+            { title: "Manto Floral", img: "https://images.unsplash.com/photo-1605218427368-35b88d3d9508?q=80&w=600" },
+            { title: "Cruces", img: "https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=600" },
+            { title: "Corazones", img: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=600" }
+        ];
+
+        const carousel = document.getElementById('floristCarousel');
+        floristItems.forEach(item => {
+            const card = document.createElement('div');
+            card.className = "snap-center shrink-0 w-80 h-96 relative group overflow-hidden rounded-sm"; 
+            card.innerHTML = `
+                <img src="${item.img}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" alt="${item.title}">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                
+                <!-- Nombre alineado a la izquierda, fondo oscuro y letras mayúsculas -->
+                <div class="absolute bottom-8 left-0">
+                    <div class="bg-slate-950 text-white px-6 py-2 font-serif text-lg tracking-wide shadow-md">
+                        ${item.title}
+                    </div>
+                </div>
+            `;
+            carousel.appendChild(card);
         });
 
         lucide.createIcons();
@@ -641,37 +749,71 @@
             document.getElementById(id).classList.add('hidden');
         }
 
-        // --- PLANS MODAL LOGIC ---
+        // --- PLANS MODAL LOGIC (FUNERARIOS) ---
         function openPlansModal() {
             document.getElementById('plansModal').classList.remove('hidden');
-            // Prevent body scroll
             document.body.style.overflow = 'hidden';
         }
 
         function closePlansModal() {
             document.getElementById('plansModal').classList.add('hidden');
-            // Restore body scroll
             document.body.style.overflow = 'auto';
         }
 
         function switchTab(tabId) {
-            // Update Buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
+            document.querySelectorAll('#plansModal .tab-btn').forEach(btn => {
                 btn.classList.remove('active', 'text-amber-600', 'border-b-2', 'border-amber-600');
                 btn.classList.add('text-slate-400');
             });
-            const activeBtn = document.getElementById('tab-' + tabId);
-            activeBtn.classList.add('active', 'text-amber-600', 'border-b-2', 'border-amber-600');
-            activeBtn.classList.remove('text-slate-400');
-
-            // Update Content
-            document.querySelectorAll('.tab-content').forEach(content => {
+            document.getElementById('tab-' + tabId).classList.add('active', 'text-amber-600', 'border-b-2', 'border-amber-600');
+            document.querySelectorAll('#plansModal .tab-content').forEach(content => {
                 content.classList.add('hidden');
-                content.classList.remove('grid'); // Remove grid display
+                content.classList.remove('grid'); 
             });
-            const activeContent = document.getElementById('content-' + tabId);
-            activeContent.classList.remove('hidden');
-            activeContent.classList.add('grid'); // Add grid display back
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            document.getElementById('content-' + tabId).classList.add('grid');
+        }
+
+        // --- CREMATION MODAL LOGIC (NUEVO) ---
+        function openCremationModal() {
+            document.getElementById('cremationModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCremationModal() {
+            document.getElementById('cremationModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchCremationTab(tabId) {
+            document.querySelectorAll('#cremationModal .tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-amber-600', 'border-b-2', 'border-amber-600');
+                btn.classList.add('text-slate-400');
+            });
+            document.getElementById('tab-' + tabId).classList.add('active', 'text-amber-600', 'border-b-2', 'border-amber-600');
+            document.querySelectorAll('#cremationModal .tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('grid'); 
+            });
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+            document.getElementById('content-' + tabId).classList.add('grid');
+        }
+
+        // --- FLORIST MODAL LOGIC (NUEVO) ---
+        function openFloristModal() {
+            document.getElementById('floristModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFloristModal() {
+            document.getElementById('floristModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function scrollFlorist(direction) {
+            const container = document.getElementById('floristCarousel');
+            const scrollAmount = 340; // Card width + gap
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
         }
 
         // --- GEMINI & CHAT LOGIC (Same as before) ---
