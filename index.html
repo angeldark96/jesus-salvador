@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funeraria Jesús Salvador Huaral - Honor y Eternidad</title>
+    
+    <!-- IMPORTANTE: Se requiere internet para que carguen estos estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fuentes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Estilos base por si falla Tailwind (Prevención básica) */
+        body { margin: 0; font-family: sans-serif; }
+        
+        /* Configuración de Fuentes Personalizadas */
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Manrope', sans-serif; }
+        
+        /* Animaciones */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; opacity: 0; }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        .animate-scale-up { animation: scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .animate-slow-zoom { animation: slowZoom 20s ease-in-out infinite alternate; }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #d97706; border-radius: 4px; }
+
+        ::selection { background-color: #f59e0b; color: white; }
+
+        /* Estilos de respaldo para logos de pago */
+        .payment-icon-fallback {
+            display: flex; align-items: center; justify-content: center;
+            width: 60px; height: 36px; border-radius: 6px;
+            font-weight: 800; font-size: 14px; letter-spacing: -0.5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: transform 0.2s;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 overflow-x-hidden">
+
+    <!-- BOTONES FLOTANTES -->
+    <div class="fixed bottom-6 right-6 lg:right-10 xl:right-16 z-50 flex flex-col gap-4 items-end animate-fade-in">
+        <!-- 1. LLÁMANOS 24/7 (SOLO MÓVIL) -->
+        <a href="tel:+51999999999" class="lg:hidden flex items-center gap-3 bg-red-700 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-red-800 transition-all hover:-translate-y-1 transform border-2 border-red-600 animate-pulse">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+            <span class="font-bold text-sm tracking-wide">LLÁMANOS 24/7</span>
+        </a>
+
+        <!-- 2. WHATSAPP (VISIBLE EN TODOS) -->
+        <a href="https://wa.me/51999999999" target="_blank" class="flex items-center gap-3 bg-emerald-500 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-emerald-600 transition-all hover:-translate-y-1 transform">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            <span class="font-bold text-sm tracking-wide">WHATSAPP</span>
+        </a>
+    </div>
+
+    <!-- HEADER -->
+    <header id="main-header" class="fixed top-0 w-full z-[60] transition-all duration-500 bg-transparent py-4 lg:py-8">
+        <div class="container mx-auto px-6 lg:px-10 xl:px-16 flex justify-between items-center max-w-[1400px]">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 lg:gap-4 group cursor-pointer pl-0 lg:pl-2">
+                <img src="https://i.imgur.com/cugDYsQ.png" alt="Logo Jesús Salvador" class="w-12 h-12 lg:w-14 lg:h-14 object-contain filter brightness-110 drop-shadow-md">
+                <div class="flex flex-col">
+                    <span class="font-serif text-xl lg:text-2xl tracking-widest font-bold text-white leading-none">JESÚS SALVADOR</span>
+                    <span class="text-[8px] lg:text-[10px] tracking-[0.4em] uppercase text-amber-400 font-bold mt-1 ml-0.5">Funeraria Huaral</span>
+                </div>
+            </div>
+
+            <!-- Menú Desktop -->
+            <nav class="hidden lg:flex items-center gap-10">
+                <a href="#inicio" class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300 hover:text-amber-400 transition-colors relative group py-2">Inicio<span class="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-500 transition-all duration-300 group-hover:w-full"></span></a>
+                <a href="#nosotros" class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300 hover:text-amber-400 transition-colors relative group py-2">Nosotros<span class="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-500 transition-all duration-300 group-hover:w-full"></span></a>
+                <a href="#servicios" class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300 hover:text-amber-400 transition-colors relative group py-2">Servicios<span class="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-500 transition-all duration-300 group-hover:w-full"></span></a>
+                <a href="#obituarios" class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300 hover:text-amber-400 transition-colors relative group py-2">Obituarios<span class="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-500 transition-all duration-300 group-hover:w-full"></span></a>
+                <a href="#contacto" class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-300 hover:text-amber-400 transition-colors relative group py-2">Contacto<span class="absolute bottom-0 left-0 w-0 h-[2px] bg-amber-500 transition-all duration-300 group-hover:w-full"></span></a>
+            </nav>
+
+            <!-- Menú Móvil Trigger -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white p-2">
+                <i data-lucide="menu" class="w-7 h-7 lg:w-8 lg:h-8"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú Móvil Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-slate-950 z-[55] transition-transform duration-500 lg:hidden flex flex-col items-center justify-center gap-8 translate-x-full">
+        <a href="#inicio" class="mobile-link text-2xl font-serif text-white hover:text-amber-400 transition-colors">Inicio</a>
+        <a href="#nosotros" class="mobile-link text-2xl font-serif text-white hover:text-amber-400 transition-colors">Nosotros</a>
+        <a href="#servicios" class="mobile-link text-2xl font-serif text-white hover:text-amber-400 transition-colors">Servicios</a>
+        <a href="#obituarios" class="mobile-link text-2xl font-serif text-white hover:text-amber-400 transition-colors">Obituarios</a>
+        <a href="#contacto" class="mobile-link text-2xl font-serif text-white hover:text-amber-400 transition-colors">Contacto</a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden bg-slate-950">
+        <!-- CONTENEDOR FONDO MIXTO (Video + Imagen de Respaldo) -->
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+            <!-- 1. IMAGEN DE RESPALDO (Se ve si el video falla o carga lento) -->
+            <img src="https://images.unsplash.com/photo-1595856719597-94d344837a77?q=80&w=2000&auto=format&fit=crop" 
+                 class="absolute inset-0 w-full h-full object-cover opacity-80" 
+                 alt="Fondo de respaldo">
+
+            <!-- 2. VIDEO DE YOUTUBE DE FONDO -->
+            <!-- Pointer events none para que no interfiera con clics -->
+            <div class="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                <iframe 
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/ahWhgBlQrq4?autoplay=1&mute=1&controls=0&loop=1&playlist=ahWhgBlQrq4&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1" 
+                    title="Video Banner Funeraria"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen
+                    style="pointer-events: none;">
+                </iframe>
+            </div>
+
+            <!-- 3. CAPAS DE OSCURECIMIENTO (Encima del video/imagen para que el texto resalte) -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/40 to-slate-950 z-0"></div>
+            <div class="absolute inset-0 bg-slate-950/20 backdrop-brightness-90 z-0"></div>
+        </div>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <!-- Ajustado: lg:pt-32 para centrar verticalmente restando la altura del header -->
+        <div class="container mx-auto px-6 lg:px-10 xl:px-16 flex flex-col justify-center h-full max-w-[1400px] pt-24 lg:pt-32 relative z-10">
+            <div class="max-w-5xl mx-auto lg:mx-0 pl-0 lg:pl-2 text-center lg:text-left">
+                
+                <!-- Ajustado tamaño de fuente: lg:text-8xl en lugar de 9xl para evitar desbordamiento vertical -->
+                <h1 class="text-4xl sm:text-6xl lg:text-8xl font-serif text-white leading-[1.1] lg:leading-[0.9] mb-6 lg:mb-8 animate-fade-in-up drop-shadow-2xl delay-100">
+                    Honor y <br />
+                    <span class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">Eternidad.</span>
+                </h1>
+                
+                <!-- Ajuste: aumentado pl-4 a pl-6 para más espacio con la línea roja -->
+                <p class="text-slate-300 text-base sm:text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0 mb-8 lg:mb-10 leading-relaxed font-light animate-fade-in-up delay-200 border-l-0 lg:border-l-2 border-red-600 pl-0 lg:pl-6">
+                    Acompañamos a las familias de Huaral con la dignidad, el respeto y la calidez humana que definen nuestra trayectoria de 40 años.
+                </p>
+                
+                <!-- Ajustado margen inferior para separar de la sección inferior -->
+                <div class="flex flex-col sm:flex-row gap-4 lg:gap-5 animate-fade-in-up delay-300 mb-10 lg:mb-0 justify-center lg:justify-start">
+                    <button class="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-10 py-5 font-bold uppercase tracking-widest text-xs hover:from-amber-500 hover:to-amber-600 transition-all shadow-lg shadow-amber-900/50 flex items-center justify-center gap-3 group rounded-sm">
+                        Planes de Previsión <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    <a href="#contacto" class="bg-transparent border border-white/30 text-white px-10 py-5 font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-slate-950 transition-all text-center backdrop-blur-sm rounded-sm">
+                        Asistencia Inmediata
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce opacity-50 z-10">
+            <span class="text-[9px] text-white uppercase tracking-[0.3em]">Descubrir</span>
+            <div class="w-[1px] h-16 bg-gradient-to-b from-amber-500 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="py-24 lg:py-32 bg-white relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div class="relative z-10">
+                    <h2 class="text-amber-600 font-bold uppercase tracking-widest text-xs mb-6 flex items-center gap-2">
+                        <span class="w-8 h-[2px] bg-amber-600"></span> Sobre Nosotros
+                    </h2>
+                    <h3 class="text-4xl lg:text-6xl font-serif text-slate-950 mb-8 leading-tight">
+                        Guardianes de la <span class="italic text-slate-500">memoria.</span>
+                    </h3>
+                    <p class="text-slate-600 text-lg leading-relaxed font-light mb-8">
+                        En Funeraria Jesús Salvador Huaral, entendemos que nuestro deber va más allá del servicio funerario; se trata de honrar una vida. Nuestras instalaciones están diseñadas para brindar paz y recogimiento.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 pt-8 border-t border-slate-100">
+                        <div class="flex flex-col gap-2">
+                            <i data-lucide="award" class="text-amber-600 w-8 h-8"></i>
+                            <span class="text-3xl font-serif font-bold text-slate-900">40+</span>
+                            <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">Años de Servicio</p>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <i data-lucide="users" class="text-amber-600 w-8 h-8"></i>
+                            <span class="text-3xl font-serif font-bold text-slate-900">24/7</span>
+                            <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">Atención Familiar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute inset-0 bg-slate-900 transform translate-x-4 translate-y-4 -z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?q=80&w=1000&auto=format&fit=crop" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" alt="Instalaciones Huaral">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-24 lg:py-32 bg-slate-950 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-amber-600/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-[100px]"></div>
+
+        <div class="container mx-auto px-6 text-center mb-20 relative z-10">
+            <h2 class="text-amber-500 font-bold uppercase tracking-widest text-xs mb-4">Servicios Integrales</h2>
+            <h3 class="text-4xl lg:text-6xl font-serif italic">Dignidad en cada detalle</h3>
+        </div>
+
+        <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10" id="services-grid">
+            <!-- Services injected by JS -->
+        </div>
+    </section>
+
+    <!-- OBITUARIOS -->
+    <section id="obituarios" class="py-24 lg:py-32 bg-white">
+        <div class="container mx-auto px-6 text-center mb-16">
+            <h2 class="text-amber-600 font-bold uppercase tracking-widest text-xs mb-4">En Memoria</h2>
+            <h3 class="text-4xl lg:text-5xl font-serif text-slate-900">Homenajes Recientes</h3>
+        </div>
+
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Items Obituarios -->
+            <div class="bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden rounded-sm">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://i.pravatar.cc/300?u=rip1" class="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-700" alt="Difunto">
+                    <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-8 text-center">
+                    <h4 class="text-xl font-serif text-slate-900 mb-2">Familia Ramos</h4>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 mb-6">Velatorio: Sala La Paz</p>
+                    <button class="text-[10px] font-bold uppercase tracking-widest text-amber-600 border-b border-amber-600 pb-1 hover:text-slate-900 hover:border-slate-900 transition-all">Dejar Condolencias</button>
+                </div>
+            </div>
+            <!-- (Repetir para más items si se desea) -->
+            <div class="bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden rounded-sm">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://i.pravatar.cc/300?u=rip2" class="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-700" alt="Difunto">
+                    <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-8 text-center">
+                    <h4 class="text-xl font-serif text-slate-900 mb-2">Sra. Elena Vargas</h4>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 mb-6">Velatorio: Sala Eternidad</p>
+                    <button class="text-[10px] font-bold uppercase tracking-widest text-amber-600 border-b border-amber-600 pb-1 hover:text-slate-900 hover:border-slate-900 transition-all">Dejar Condolencias</button>
+                </div>
+            </div>
+            <div class="bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden rounded-sm">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://i.pravatar.cc/300?u=rip3" class="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-700" alt="Difunto">
+                    <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-8 text-center">
+                    <h4 class="text-xl font-serif text-slate-900 mb-2">Sr. Carlos Ruiz</h4>
+                    <p class="text-xs uppercase tracking-widest text-slate-500 mb-6">Velatorio: Sala Principal</p>
+                    <button class="text-[10px] font-bold uppercase tracking-widest text-amber-600 border-b border-amber-600 pb-1 hover:text-slate-900 hover:border-slate-900 transition-all">Dejar Condolencias</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="bg-white shadow-2xl grid lg:grid-cols-2 overflow-hidden rounded-sm">
+                <div class="p-12 lg:p-16 bg-slate-950 text-white flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-amber-600/20 rounded-full blur-[80px]"></div>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-serif mb-8 italic">Estamos aquí para usted.</h3>
+                        <div class="space-y-8">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full text-amber-400">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Emergencias</p>
+                                    <p class="text-xl font-serif">(01) 456-7890</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-white/10 flex items-center justify-center rounded-full text-amber-400">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Sede Huaral</p>
+                                    <p class="text-lg text-slate-300">Av. Solar 123, Huaral</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-12 lg:p-16">
+                    <h3 class="text-2xl font-serif text-slate-900 mb-6">Envíenos un mensaje</h3>
+                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('Mensaje enviado. Le contactaremos pronto.');">
+                        <div class="grid grid-cols-2 gap-6">
+                            <input placeholder="Nombre" class="w-full border-b border-slate-300 py-3 outline-none focus:border-amber-600 transition-colors bg-transparent placeholder:text-slate-400">
+                            <input placeholder="Teléfono" class="w-full border-b border-slate-300 py-3 outline-none focus:border-amber-600 transition-colors bg-transparent placeholder:text-slate-400">
+                        </div>
+                        <textarea rows="3" placeholder="Mensaje" class="w-full border-b border-slate-300 py-3 outline-none focus:border-amber-600 transition-colors bg-transparent placeholder:text-slate-400 resize-none"></textarea>
+                        <button type="submit" class="w-full bg-slate-900 text-white py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors rounded-sm">
+                            Enviar Consulta
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-300 pt-16 pb-12 border-t border-white/10 font-sans">
+        <div class="container mx-auto px-6 lg:px-12">
+            
+            <!-- BARRA DE MÉTODOS DE PAGO (COLORES ORIGINALES + FONDO TRANSPARENTE) -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/10 pb-10 mb-12">
+                <div class="text-center md:text-left">
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-1 flex items-center gap-2 justify-center md:justify-start">
+                        <i data-lucide="credit-card" class="w-4 h-4 text-amber-500"></i> Medios de Pago
+                    </h4>
+                    <p class="text-xs text-slate-500 font-light">Aceptamos todas las tarjetas, billeteras digitales y efectivo.</p>
+                </div>
+                
+                <!-- CONTENEDOR DE ICONOS -->
+                <div class="flex flex-wrap justify-center gap-3">
+                    
+                    <!-- VISA -->
+                    <div class="bg-transparent border border-white/20 px-2 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" 
+                            alt="Visa" 
+                            class="h-full w-full object-contain" 
+                            onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-blue-500 font-black italic text-sm tracking-tighter\'>VISA</span>';"
+                        >
+                    </div>
+                    
+                    <!-- MASTERCARD -->
+                    <div class="bg-transparent border border-white/20 px-2 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" 
+                            alt="Mastercard" 
+                            class="h-full w-full object-contain"
+                            onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-red-500 font-bold text-xs uppercase\'>Mastercard</span>';"
+                        >
+                    </div>
+
+                    <!-- AMEX -->
+                    <div class="bg-transparent border border-white/20 px-2 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" 
+                            alt="Amex" 
+                            class="h-full w-full object-contain"
+                            onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-blue-400 font-bold text-xs uppercase\'>AMEX</span>';"
+                        >
+                    </div>
+                    
+                    <!-- YAPE -->
+                    <div class="bg-transparent border border-white/20 px-1 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40 overflow-hidden">
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Yape_text_app_icon.png" 
+                            alt="Yape" 
+                            class="h-full w-full object-contain scale-90"
+                            onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-purple-500 font-bold text-sm italic\'>Yape</span>';"
+                        >
+                    </div>
+                    
+                    <!-- PLIN -->
+                    <div class="bg-transparent border border-white/20 px-1 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40 overflow-hidden">
+                        <img 
+                            src="https://i.imgur.com/c6ZhQhv.png" 
+                            alt="Plin" 
+                            class="h-full w-full object-contain scale-90"
+                        >
+                    </div>
+
+                    <!-- EFECTIVO (Solo Icono Verde) -->
+                    <div class="bg-transparent border border-white/20 px-4 py-1 rounded-sm shadow-sm h-10 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40" title="Efectivo">
+                        <i data-lucide="banknote" class="w-7 h-7 text-emerald-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
+                <!-- Columna 1 -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center rounded-sm shadow-lg shadow-amber-900/40">
+                            <!-- REEMPLAZO LOGO FOOTER -->
+                            <img src="https://i.imgur.com/cugDYsQ.png" alt="Logo Footer" class="w-full h-full object-contain brightness-110 drop-shadow-md">
+                        </div>
+                        <div>
+                            <span class="font-serif text-xl tracking-widest font-bold text-white block leading-none">JESÚS SALVADOR</span>
+                            <span class="text-[9px] uppercase tracking-[0.3em] text-amber-500 font-bold">Huaral</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed font-light">
+                        Más de 40 años brindando soporte, respeto y dignidad a las familias de Huaral. Un legado de servicio inquebrantable.
+                    </p>
+                    <div class="flex gap-4 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-amber-600 hover:text-white transition-all duration-300 text-slate-400"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-amber-600 hover:text-white transition-all duration-300 text-slate-400"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2 -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-b border-amber-600/30 pb-4 inline-block">Nuestra Empresa</h4>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li><a href="#nosotros" class="hover:text-amber-500 hover:pl-2 transition-all duration-300 flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-amber-600"></i> Quiénes Somos</a></li>
+                        <li><a href="#servicios" class="hover:text-amber-500 hover:pl-2 transition-all duration-300 flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-amber-600"></i> Nuestras Sedes</a></li>
+                        <li><a href="#obituarios" class="hover:text-amber-500 hover:pl-2 transition-all duration-300 flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-amber-600"></i> Obituarios</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3 -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-b border-amber-600/30 pb-4 inline-block">Servicios</h4>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li><a href="#" class="hover:text-amber-500 hover:pl-2 transition-all duration-300 flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-amber-600"></i> Previsión Exequial</a></li>
+                        <li><a href="#" class="hover:text-amber-500 hover:pl-2 transition-all duration-300 flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-amber-600"></i> Inhumación</a></li>
+                        <li><a href="#" class="hover:text-amber-500 hover:pl-2 transition-all duration-300 flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-amber-600"></i> Cremación</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4 -->
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-b border-amber-600/30 pb-4 inline-block">Contacto Huaral</h4>
+                    <ul class="space-y-5 text-sm mb-10">
+                        <!-- Dirección -->
+                        <li class="flex items-start gap-4 group">
+                            <div class="mt-1 w-8 h-8 rounded bg-white/5 flex items-center justify-center text-amber-500 group-hover:bg-amber-600 group-hover:text-white transition-colors flex-shrink-0">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-white mb-1 text-xs uppercase tracking-wider">Dirección</strong>
+                                <span class="text-slate-400 font-light block">Av. Solar 123, Huaral</span>
+                                <span class="text-slate-500 text-xs italic">(Ref. Frente al Hospital de Huaral)</span>
+                            </div>
+                        </li>
+
+                        <!-- Teléfono Fijo -->
+                        <li class="flex items-start gap-4 group">
+                            <div class="mt-1 w-8 h-8 rounded bg-white/5 flex items-center justify-center text-amber-500 group-hover:bg-amber-600 group-hover:text-white transition-colors flex-shrink-0">
+                                <i data-lucide="phone" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-white mb-1 text-xs uppercase tracking-wider">Teléfono Fijo</strong>
+                                <span class="text-slate-400 font-light">(01) 246-4567</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500">© 2024 Funeraria Jesús Salvador • Todos los derechos reservados</p>
+                <div class="flex gap-8 text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500">
+                    <a href="#" class="hover:text-amber-500 transition-colors">Privacidad</a>
+                    <a href="#" class="hover:text-amber-500 transition-colors">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL GRIEF (ASISTENTE DUELO) -->
+    <div id="griefModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 hidden">
+        <div class="bg-white w-full max-w-md h-[600px] flex flex-col shadow-2xl border-t-4 border-amber-600 animate-scale-up">
+            <div class="p-6 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
+                <h3 class="font-serif italic text-lg text-slate-800">Consejero IA</h3>
+                <button onclick="closeModal('griefModal')" class="text-slate-400 hover:text-slate-900"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div id="griefChatContainer" class="flex-1 p-6 overflow-y-auto space-y-4 bg-white">
+                <div class="text-center py-10 opacity-50">
+                    <i data-lucide="heart" class="mx-auto mb-4 text-slate-300 w-8 h-8"></i>
+                    <p class="text-sm italic">"Estoy aquí para escucharte."</p>
+                </div>
+            </div>
+            <div class="p-4 border-t border-slate-100 flex gap-2">
+                <input id="griefInput" type="text" placeholder="Escribe aquí..." class="flex-1 bg-slate-50 px-4 py-2 text-sm outline-none focus:ring-1 focus:ring-amber-500 rounded" onkeypress="handleGriefInputKey(event)">
+                <button onclick="sendGriefMessage()" class="bg-slate-900 text-white p-2 rounded hover:bg-amber-600 transition-colors"><i data-lucide="send" class="w-4 h-4"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL TRIBUTE (HOMENAJE) -->
+    <div id="tributeModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 hidden">
+        <div class="bg-white w-full max-w-lg p-10 relative animate-scale-up shadow-2xl border-t-4 border-amber-600">
+            <button onclick="closeModal('tributeModal')" class="absolute top-4 right-4 text-slate-300 hover:text-slate-900"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h3 class="text-3xl font-serif text-slate-900 mb-2">Homenaje Solemne</h3>
+            <p class="text-slate-500 text-sm mb-8">IA redactará un tributo digno.</p>
+            
+            <div id="tributeForm" class="space-y-6">
+                <input id="tributeName" placeholder="Nombre del difunto" class="w-full border-b border-slate-200 py-3 outline-none focus:border-amber-600 transition-colors">
+                <input id="tributeTraits" placeholder="Virtudes (ej: bondad)" class="w-full border-b border-slate-200 py-3 outline-none focus:border-amber-600 transition-colors">
+                <textarea id="tributeLegacy" placeholder="Recuerdo especial" rows="2" class="w-full border-b border-slate-200 py-3 outline-none focus:border-amber-600 transition-colors resize-none"></textarea>
+                <button onclick="generateTribute()" class="w-full bg-slate-900 text-white py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors flex justify-center gap-2 items-center">
+                    <span id="tributeBtnText">Generar Texto</span>
+                </button>
+            </div>
+
+            <div id="tributeResult" class="bg-slate-50 p-8 border-l-4 border-amber-500 hidden mt-6">
+                <p id="tributeText" class="font-serif italic text-lg text-slate-800 leading-relaxed mb-6"></p>
+                <button onclick="resetTribute()" class="text-xs font-bold uppercase text-amber-600 hover:text-slate-900">Redactar otro</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const apiKey = ""; 
+
+        // --- SERVICES DATA ---
+        const servicesData = [
+            { title: "Servicios Funerarios", icon: "heart", desc: "Atención inmediata las 24 horas en todo Huaral." },
+            { title: "Crematorio Ecológico", icon: "flower-2", desc: "Procesos respetuosos con entrega de urna." },
+            { title: "Planes de Previsión", icon: "shield-check", desc: "Proteja a su familia hoy para el futuro." },
+            { title: "Floristería Premium", icon: "flower-2", desc: "Arreglos florales solemnes y personalizados." },
+            { title: "Traslados Nacionales", icon: "truck", desc: "Gestión logística desde cualquier parte del Perú." },
+            { title: "Salas de Velación", icon: "map-pin", desc: "Ambientes privados y confortables." }
+        ];
+
+        const servicesContainer = document.getElementById('services-grid');
+        servicesData.forEach(s => {
+            const el = document.createElement('div');
+            el.className = "group relative bg-slate-900 border border-white/5 p-10 hover:border-amber-500/50 transition-all duration-500 hover:-translate-y-2 rounded-sm";
+            el.innerHTML = `
+                <div class="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center text-amber-500 mb-8 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500 shadow-lg group-hover:shadow-amber-900/50">
+                    <i data-lucide="${s.icon}" class="w-8 h-8"></i>
+                </div>
+                <h4 class="text-2xl font-serif mb-4 text-white group-hover:text-amber-400 transition-colors">${s.title}</h4>
+                <p class="text-slate-400 text-sm leading-relaxed mb-8 font-light">${s.desc}</p>
+                <div class="w-12 h-[1px] bg-slate-700 group-hover:w-full group-hover:bg-amber-500 transition-all duration-500"></div>
+            `;
+            servicesContainer.appendChild(el);
+        });
+
+        lucide.createIcons();
+
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-slate-950/95', 'backdrop-blur-md', 'py-3', 'shadow-2xl', 'border-b', 'border-white/5');
+                header.classList.remove('bg-transparent', 'py-8');
+            } else {
+                header.classList.remove('bg-slate-950/95', 'backdrop-blur-md', 'py-3', 'shadow-2xl', 'border-b', 'border-white/5');
+                header.classList.add('bg-transparent', 'py-8');
+            }
+        });
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menuOverlay = document.getElementById('mobile-menu-overlay');
+        const menuLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                menuOverlay.classList.remove('translate-x-full');
+                menuBtn.innerHTML = '<i data-lucide="x" class="w-7 h-7"></i>';
+            } else {
+                menuOverlay.classList.add('translate-x-full');
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-7 h-7"></i>';
+            }
+            lucide.createIcons();
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                menuOverlay.classList.add('translate-x-full');
+                menuBtn.innerHTML = '<i data-lucide="menu" class="w-7 h-7"></i>';
+                lucide.createIcons();
+            });
+        });
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        async function callGemini(prompt, systemInstruction) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] }
+            };
+
+            for (let i = 0; i < 3; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error('API Error');
+                    const data = await response.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text;
+                } catch (e) {
+                    if (i === 2) throw e;
+                    await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+                }
+            }
+        }
+
+        const griefChatContainer = document.getElementById('griefChatContainer');
+        const griefInput = document.getElementById('griefInput');
+
+        function appendMessage(role, text) {
+            const div = document.createElement('div');
+            div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+            div.innerHTML = `
+                <div class="max-w-[85%] p-4 text-sm ${role === 'user' ? 'bg-amber-600 text-white rounded-l-xl rounded-tr-xl' : 'bg-slate-100 text-slate-700 rounded-r-xl rounded-tl-xl'}">
+                    ${text}
+                </div>
+            `;
+            griefChatContainer.appendChild(div);
+            griefChatContainer.scrollTop = griefChatContainer.scrollHeight;
+        }
+
+        function handleGriefInputKey(e) {
+            if (e.key === 'Enter') sendGriefMessage();
+        }
+
+        async function sendGriefMessage() {
+            const text = griefInput.value.trim();
+            if (!text) return;
+
+            appendMessage('user', text);
+            griefInput.value = '';
+
+            const loadingId = 'loading-' + Date.now();
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = loadingId;
+            loadingDiv.className = 'text-xs text-slate-400 italic pl-4';
+            loadingDiv.textContent = 'Escribiendo...';
+            griefChatContainer.appendChild(loadingDiv);
+
+            try {
+                const systemPrompt = "Eres un asistente de duelo de Funeraria Jesús Salvador Huaral. Responde con calidez, brevedad y profesionalismo.";
+                const response = await callGemini(text, systemPrompt);
+                document.getElementById(loadingId).remove();
+                appendMessage('bot', response);
+            } catch (err) {
+                document.getElementById(loadingId).remove();
+                appendMessage('bot', "Lo sentimos, contáctanos por teléfono para atención inmediata.");
+            }
+        }
+
+        async function generateTribute() {
+            const name = document.getElementById('tributeName').value;
+            const traits = document.getElementById('tributeTraits').value;
+            const legacy = document.getElementById('tributeLegacy').value;
+            const btnText = document.getElementById('tributeBtnText');
+
+            if (!name) return alert("Por favor ingresa el nombre.");
+
+            btnText.textContent = "Generando...";
+            
+            try {
+                const prompt = `Homenaje para ${name}. Virtudes: ${traits}. Legado: ${legacy}. Tono: Solemne. Máx 80 palabras.`;
+                const systemPrompt = "Eres un redactor de elegías experto.";
+                const response = await callGemini(prompt, systemPrompt);
+                
+                document.getElementById('tributeForm').classList.add('hidden');
+                document.getElementById('tributeResult').classList.remove('hidden');
+                document.getElementById('tributeText').textContent = response;
+            } catch (err) {
+                alert("Error al generar. Intente nuevamente.");
+            } finally {
+                btnText.textContent = "Generar Texto";
+            }
+        }
+
+        function resetTribute() {
+            document.getElementById('tributeForm').classList.remove('hidden');
+            document.getElementById('tributeResult').classList.add('hidden');
+            document.getElementById('tributeName').value = '';
+            document.getElementById('tributeTraits').value = '';
+            document.getElementById('tributeLegacy').value = '';
+        }
+
+        // --- CONNECTIVITY CHECK ---
+        window.onload = function() {
+            // Verificación simple: Si Tailwind no carga, el body no tendrá estilos aplicados correctamente.
+            // Una forma robusta es verificar si una clase de utilidad está aplicada.
+            const testElement = document.createElement('div');
+            testElement.className = 'hidden';
+            document.body.appendChild(testElement);
+            
+            const computedStyle = window.getComputedStyle(testElement);
+            if (computedStyle.display !== 'none') {
+                alert("⚠️ Aviso de Conexión: \n\nNo se detectó conexión a internet o el sistema de estilos (Tailwind) fue bloqueado.\n\nPara ver el diseño correctamente, asegúrese de tener internet activo.");
+            }
+            document.body.removeChild(testElement);
+
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
