@@ -53,14 +53,26 @@
             font-weight: 800; font-size: 14px; letter-spacing: -0.5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: transform 0.2s;
         }
+
+        /* Estilos para Tabs */
+        .tab-btn.active {
+            border-bottom: 2px solid #d97706; /* amber-600 */
+            color: #d97706;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .tab-content.active {
+            display: grid;
+        }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-900 overflow-x-hidden">
 
     <!-- BOTONES FLOTANTES -->
-    <!-- Ajustado margen derecho en desktop (lg:right-10 xl:right-16) para dar más espacio -->
     <div class="fixed bottom-6 right-6 lg:right-10 xl:right-16 z-50 flex flex-col gap-4 items-end animate-fade-in">
-        <!-- 1. EMERGENCIA 24/7 (SOLO MÓVIL) -->
+        <!-- 1. LLÁMANOS 24/7 (SOLO MÓVIL) -->
         <a href="tel:+51999999999" class="lg:hidden flex items-center gap-3 bg-red-700 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-red-800 transition-all hover:-translate-y-1 transform border-2 border-red-600 animate-pulse">
             <i data-lucide="phone" class="w-5 h-5"></i>
             <span class="font-bold text-sm tracking-wide">LLÁMANOS 24/7</span>
@@ -77,7 +89,6 @@
 
     <!-- HEADER -->
     <header id="main-header" class="fixed top-0 w-full z-[60] transition-all duration-500 bg-transparent py-4 lg:py-8">
-        <!-- Aumentado max-w y px para dar más espacio lateral al logo -->
         <div class="container mx-auto px-6 lg:px-10 xl:px-16 flex justify-between items-center max-w-[1400px]">
             <!-- Logo -->
             <div class="flex items-center gap-3 lg:gap-4 group cursor-pointer pl-0 lg:pl-2">
@@ -114,43 +125,30 @@
     </div>
 
     <!-- HERO SECTION -->
-    <!-- CORRECCIÓN: Eliminado 'bg-slate-950' para evitar que tape la imagen -->
     <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
-        
-        <!-- CORRECCIÓN: Cambiado '-z-10' a 'z-0' para asegurar que esté en el flujo visual correcto -->
         <div class="absolute inset-0 z-0">
             <!-- IMAGEN DE BANNER -->
-            <!-- Se añadió onerror para cargar una imagen de respaldo si la de Imgur falla -->
             <img 
                 src="https://i.imgur.com/v3I4hFK.jpeg" 
                 class="w-full h-full object-cover animate-slow-zoom opacity-90" 
                 alt="Funeraria Jesús Salvador Huaral - Servicio Solemne"
                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595856719597-94d344837a77?q=80&w=2000&auto=format&fit=crop';"
             >
-            
-            <!-- Capas de oscurecimiento -->
             <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/50 to-slate-950"></div>
             <div class="absolute inset-0 bg-slate-950/30 backdrop-brightness-75"></div>
         </div>
 
-        <!-- Ajustado: lg:pt-32 para centrar verticalmente restando la altura del header -->
         <div class="container mx-auto px-6 lg:px-10 xl:px-16 flex flex-col justify-center h-full max-w-[1400px] pt-24 lg:pt-32 relative z-10">
             <div class="max-w-5xl mx-auto lg:mx-0 pl-0 lg:pl-2 text-center lg:text-left">
-                
-                <!-- Ajustado tamaño de fuente: lg:text-8xl en lugar de 9xl para evitar desbordamiento vertical -->
                 <h1 class="text-4xl sm:text-6xl lg:text-8xl font-serif text-white leading-[1.1] lg:leading-[0.9] mb-6 lg:mb-8 animate-fade-in-up drop-shadow-2xl delay-100">
                     Honor y <br />
                     <span class="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">Eternidad.</span>
                 </h1>
-                
-                <!-- Ajuste: aumentado pl-4 a pl-6 para más espacio con la línea roja -->
                 <p class="text-slate-300 text-base sm:text-xl lg:text-2xl max-w-2xl mx-auto lg:mx-0 mb-8 lg:mb-10 leading-relaxed font-light animate-fade-in-up delay-200 border-l-0 lg:border-l-2 border-red-600 pl-0 lg:pl-6">
                     Acompañamos a las familias de Huaral con la dignidad, el respeto y la calidez humana que definen nuestra trayectoria de 40 años.
                 </p>
-                
-                <!-- Ajustado margen inferior para separar de la sección inferior -->
                 <div class="flex flex-col sm:flex-row gap-4 lg:gap-5 animate-fade-in-up delay-300 mb-10 lg:mb-0 justify-center lg:justify-start">
-                    <button class="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-10 py-5 font-bold uppercase tracking-widest text-xs hover:from-amber-500 hover:to-amber-600 transition-all shadow-lg shadow-amber-900/50 flex items-center justify-center gap-3 group rounded-sm">
+                    <button onclick="openPlansModal()" class="bg-gradient-to-r from-amber-600 to-amber-700 text-white px-10 py-5 font-bold uppercase tracking-widest text-xs hover:from-amber-500 hover:to-amber-600 transition-all shadow-lg shadow-amber-900/50 flex items-center justify-center gap-3 group rounded-sm">
                         Planes de Previsión <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                     </button>
                     <a href="#contacto" class="bg-transparent border border-white/30 text-white px-10 py-5 font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-slate-950 transition-all text-center backdrop-blur-sm rounded-sm">
@@ -159,7 +157,6 @@
                 </div>
             </div>
         </div>
-
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce opacity-50 z-10">
             <span class="text-[9px] text-white uppercase tracking-[0.3em]">Descubrir</span>
             <div class="w-[1px] h-16 bg-gradient-to-b from-amber-500 to-transparent"></div>
@@ -180,7 +177,6 @@
                     <p class="text-slate-600 text-lg leading-relaxed font-light mb-8">
                         En Funeraria Jesús Salvador Huaral, entendemos que nuestro deber va más allá del servicio funerario; se trata de honrar una vida. Nuestras instalaciones están diseñadas para brindar paz y recogimiento.
                     </p>
-                    
                     <div class="grid grid-cols-2 gap-8 pt-8 border-t border-slate-100">
                         <div class="flex flex-col gap-2">
                             <i data-lucide="award" class="text-amber-600 w-8 h-8"></i>
@@ -194,7 +190,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="relative">
                     <div class="absolute inset-0 bg-slate-900 transform translate-x-4 translate-y-4 -z-10"></div>
                     <img src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?q=80&w=1000&auto=format&fit=crop" class="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" alt="Instalaciones Huaral">
@@ -207,12 +202,10 @@
     <section id="servicios" class="py-24 lg:py-32 bg-slate-950 text-white relative overflow-hidden">
         <div class="absolute top-0 right-0 w-96 h-96 bg-amber-600/10 rounded-full blur-[100px]"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/10 rounded-full blur-[100px]"></div>
-
         <div class="container mx-auto px-6 text-center mb-20 relative z-10">
             <h2 class="text-amber-500 font-bold uppercase tracking-widest text-xs mb-4">Servicios Integrales</h2>
             <h3 class="text-4xl lg:text-6xl font-serif italic">Dignidad en cada detalle</h3>
         </div>
-
         <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10" id="services-grid">
             <!-- Services injected by JS -->
         </div>
@@ -224,9 +217,7 @@
             <h2 class="text-amber-600 font-bold uppercase tracking-widest text-xs mb-4">En Memoria</h2>
             <h3 class="text-4xl lg:text-5xl font-serif text-slate-900">Homenajes Recientes</h3>
         </div>
-
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Items Obituarios -->
             <div class="bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden rounded-sm">
                 <div class="h-48 overflow-hidden relative">
                     <img src="https://i.pravatar.cc/300?u=rip1" class="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-700" alt="Difunto">
@@ -238,7 +229,6 @@
                     <button class="text-[10px] font-bold uppercase tracking-widest text-amber-600 border-b border-amber-600 pb-1 hover:text-slate-900 hover:border-slate-900 transition-all">Dejar Condolencias</button>
                 </div>
             </div>
-            <!-- (Repetir para más items si se desea) -->
             <div class="bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden rounded-sm">
                 <div class="h-48 overflow-hidden relative">
                     <img src="https://i.pravatar.cc/300?u=rip2" class="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-700" alt="Difunto">
@@ -316,7 +306,7 @@
     <footer class="bg-slate-950 text-slate-300 pt-16 pb-12 border-t border-white/10 font-sans">
         <div class="container mx-auto px-6 lg:px-12">
             
-            <!-- BARRA DE MÉTODOS DE PAGO (COLORES ORIGINALES + FONDO TRANSPARENTE) -->
+            <!-- BARRA DE MÉTODOS DE PAGO -->
             <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-white/10 pb-10 mb-12">
                 <div class="text-center md:text-left">
                     <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-1 flex items-center gap-2 justify-center md:justify-start">
@@ -325,59 +315,28 @@
                     <p class="text-xs text-slate-500 font-light">Aceptamos todas las tarjetas, billeteras digitales y efectivo.</p>
                 </div>
                 
-                <!-- CONTENEDOR DE ICONOS -->
                 <div class="flex flex-wrap justify-center gap-3">
-                    
                     <!-- VISA -->
                     <div class="bg-transparent border border-white/20 px-2 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40">
-                        <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" 
-                            alt="Visa" 
-                            class="h-full w-full object-contain" 
-                            onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-blue-500 font-black italic text-sm tracking-tighter\'>VISA</span>';"
-                        >
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="h-full w-full object-contain" onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-blue-500 font-black italic text-sm tracking-tighter\'>VISA</span>';">
                     </div>
-                    
                     <!-- MASTERCARD -->
                     <div class="bg-transparent border border-white/20 px-2 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40">
-                        <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" 
-                            alt="Mastercard" 
-                            class="h-full w-full object-contain"
-                            onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-red-500 font-bold text-xs uppercase\'>Mastercard</span>';"
-                        >
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="h-full w-full object-contain" onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-red-500 font-bold text-xs uppercase\'>Mastercard</span>';">
                     </div>
-
                     <!-- AMEX -->
                     <div class="bg-transparent border border-white/20 px-2 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40">
-                        <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" 
-                            alt="Amex" 
-                            class="h-full w-full object-contain"
-                            onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-blue-400 font-bold text-xs uppercase\'>AMEX</span>';"
-                        >
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg" alt="Amex" class="h-full w-full object-contain" onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-blue-400 font-bold text-xs uppercase\'>AMEX</span>';">
                     </div>
-                    
                     <!-- YAPE -->
                     <div class="bg-transparent border border-white/20 px-1 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40 overflow-hidden">
-                        <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Yape_text_app_icon.png" 
-                            alt="Yape" 
-                            class="h-full w-full object-contain scale-90"
-                            onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-purple-500 font-bold text-sm italic\'>Yape</span>';"
-                        >
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Yape_text_app_icon.png" alt="Yape" class="h-full w-full object-contain scale-90" onerror="this.onerror=null; this.parentNode.innerHTML='<span class=\'text-purple-500 font-bold text-sm italic\'>Yape</span>';">
                     </div>
-                    
                     <!-- PLIN -->
                     <div class="bg-transparent border border-white/20 px-1 py-1 rounded-sm shadow-sm h-10 w-16 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40 overflow-hidden">
-                        <img 
-                            src="https://i.imgur.com/c6ZhQhv.png" 
-                            alt="Plin" 
-                            class="h-full w-full object-contain scale-90"
-                        >
+                        <img src="https://i.imgur.com/c6ZhQhv.png" alt="Plin" class="h-full w-full object-contain scale-90">
                     </div>
-
-                    <!-- EFECTIVO (Solo Icono Verde) -->
+                    <!-- EFECTIVO -->
                     <div class="bg-transparent border border-white/20 px-4 py-1 rounded-sm shadow-sm h-10 flex items-center justify-center opacity-90 hover:opacity-100 transition-all hover:border-white/40" title="Efectivo">
                         <i data-lucide="banknote" class="w-7 h-7 text-emerald-400"></i>
                     </div>
@@ -389,7 +348,7 @@
                 <div class="space-y-6">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center rounded-sm shadow-lg shadow-amber-900/40">
-                            <span class="text-white font-serif font-bold text-xl">J</span>
+                            <img src="https://i.imgur.com/cugDYsQ.png" alt="Logo Footer" class="w-full h-full object-contain brightness-110 drop-shadow-md">
                         </div>
                         <div>
                             <span class="font-serif text-xl tracking-widest font-bold text-white block leading-none">JESÚS SALVADOR</span>
@@ -429,7 +388,6 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-b border-amber-600/30 pb-4 inline-block">Contacto Huaral</h4>
                     <ul class="space-y-5 text-sm mb-10">
-                        <!-- Dirección -->
                         <li class="flex items-start gap-4 group">
                             <div class="mt-1 w-8 h-8 rounded bg-white/5 flex items-center justify-center text-amber-500 group-hover:bg-amber-600 group-hover:text-white transition-colors flex-shrink-0">
                                 <i data-lucide="map-pin" class="w-4 h-4"></i>
@@ -440,8 +398,6 @@
                                 <span class="text-slate-500 text-xs italic">(Ref. Frente al Hospital de Huaral)</span>
                             </div>
                         </li>
-
-                        <!-- Teléfono Fijo -->
                         <li class="flex items-start gap-4 group">
                             <div class="mt-1 w-8 h-8 rounded bg-white/5 flex items-center justify-center text-amber-500 group-hover:bg-amber-600 group-hover:text-white transition-colors flex-shrink-0">
                                 <i data-lucide="phone" class="w-4 h-4"></i>
@@ -509,37 +465,135 @@
         </div>
     </div>
 
+    <!-- MODAL PLANES DETALLADOS (NUEVO) -->
+    <div id="plansModal" class="fixed inset-0 z-[100] bg-slate-50 hidden overflow-y-auto animate-fade-in">
+        <!-- Close Button Top Right -->
+        <button onclick="closePlansModal()" class="fixed top-6 right-6 z-50 p-3 bg-white rounded-full shadow-lg text-slate-800 hover:text-amber-600 transition-colors">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Header -->
+        <div class="pt-20 pb-10 text-center container mx-auto px-6">
+            <span class="text-amber-600 font-bold uppercase tracking-[0.2em] text-xs block mb-3">Nuestra Propuesta de Valor</span>
+            <h2 class="text-4xl lg:text-5xl font-serif text-slate-900">Planes Exequiales</h2>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="sticky top-0 bg-slate-50/95 backdrop-blur-md z-40 border-b border-slate-200">
+            <div class="flex justify-center gap-8 md:gap-16 pt-4 pb-0">
+                <button onclick="switchTab('basic')" id="tab-basic" class="tab-btn active pb-4 text-sm font-bold uppercase tracking-widest text-amber-600 border-b-2 border-amber-600 transition-all">Básico</button>
+                <button onclick="switchTab('intermediate')" id="tab-intermediate" class="tab-btn pb-4 text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-slate-600 transition-all">Intermedio</button>
+                <button onclick="switchTab('vip')" id="tab-vip" class="tab-btn pb-4 text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-slate-600 transition-all">VIP</button>
+            </div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="container mx-auto px-6 py-12 lg:py-20 max-w-6xl">
+            
+            <!-- PLAN BÁSICO -->
+            <div id="content-basic" class="tab-content grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 animate-scale-up">
+                    <h3 class="text-3xl font-serif text-slate-900 mb-6">Plan Esencial</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8">Una despedida digna y respetuosa que cubre todas las necesidades esenciales para honrar la memoria de su ser querido con la sobriedad que merece.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Ataúd modelo lineal estándar</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Capilla ardiente básica en domicilio</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Carroza fúnebre estándar</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Trámites legales y municipales</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Cargadores uniformados</li>
+                    </ul>
+                    <a href="#contacto" onclick="closePlansModal()" class="inline-block mt-10 bg-slate-900 text-white px-8 py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors">Cotizar Ahora</a>
+                </div>
+                <div class="order-1 lg:order-2 h-[400px] lg:h-[500px] rounded-sm overflow-hidden shadow-2xl animate-scale-up delay-100">
+                    <img src="https://images.unsplash.com/photo-1595246736467-27b055963f27?q=80&w=1000" class="w-full h-full object-cover" alt="Plan Básico">
+                </div>
+            </div>
+
+            <!-- PLAN INTERMEDIO -->
+            <div id="content-intermediate" class="tab-content hidden grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 animate-scale-up">
+                    <h3 class="text-3xl font-serif text-slate-900 mb-6">Plan Tradicional</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8">Un servicio superior diseñado para brindar mayor comodidad a la familia y un homenaje más cálido, con acabados finos y transporte adicional.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Ataúd fino acabado mate o brillante</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Capilla ardiente iluminada con pedestales</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Carroza panorámica de lujo</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> 1 Arreglo floral pedestal</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Bus para acompañantes (15 pax)</li>
+                    </ul>
+                    <a href="#contacto" onclick="closePlansModal()" class="inline-block mt-10 bg-slate-900 text-white px-8 py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-600 transition-colors">Cotizar Ahora</a>
+                </div>
+                <div class="order-1 lg:order-2 h-[400px] lg:h-[500px] rounded-sm overflow-hidden shadow-2xl animate-scale-up delay-100">
+                    <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=1000" class="w-full h-full object-cover" alt="Plan Intermedio">
+                </div>
+            </div>
+
+            <!-- PLAN VIP -->
+            <div id="content-vip" class="tab-content hidden grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 animate-scale-up">
+                    <div class="inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-3 py-1 mb-4 uppercase tracking-widest">Recomendado</div>
+                    <h3 class="text-3xl font-serif text-slate-900 mb-6">Plan Honor VIP</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8">La máxima expresión de respeto y homenaje. Un servicio exclusivo con todos los detalles cubiertos para una despedida memorable y sin preocupaciones.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="star" class="w-5 h-5 text-amber-500 fill-amber-500"></i> Ataúd de madera cedro tallado a mano</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Capilla de lujo completa con alfombra roja</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Carroza Presidencial Lincoln o Cadillac</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Coro o acompañamiento musical</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Salón de cafetería y mozos</li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700"><i data-lucide="check" class="w-5 h-5 text-amber-500"></i> Asesoría integral personalizada 24/7</li>
+                    </ul>
+                    <a href="#contacto" onclick="closePlansModal()" class="inline-block mt-10 bg-amber-600 text-white px-8 py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-700 transition-colors shadow-lg shadow-amber-600/30">Solicitar VIP</a>
+                </div>
+                <div class="order-1 lg:order-2 h-[400px] lg:h-[500px] rounded-sm overflow-hidden shadow-2xl animate-scale-up delay-100 relative">
+                    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=1000" class="w-full h-full object-cover" alt="Plan VIP">
+                    <div class="absolute inset-0 bg-gradient-to-t from-amber-900/40 to-transparent"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- JAVASCRIPT LOGIC -->
     <script>
         const apiKey = ""; 
 
-        // --- SERVICES DATA ---
+        // --- SERVICES DATA (MODIFICADO para incluir ID) ---
         const servicesData = [
-            { title: "Servicios Funerarios", icon: "heart", desc: "Atención inmediata las 24 horas en todo Huaral." },
-            { title: "Crematorio Ecológico", icon: "flower-2", desc: "Procesos respetuosos con entrega de urna." },
-            { title: "Planes de Previsión", icon: "shield-check", desc: "Proteja a su familia hoy para el futuro." },
-            { title: "Floristería Premium", icon: "flower-2", desc: "Arreglos florales solemnes y personalizados." },
-            { title: "Traslados Nacionales", icon: "truck", desc: "Gestión logística desde cualquier parte del Perú." },
-            { title: "Salas de Velación", icon: "map-pin", desc: "Ambientes privados y confortables." }
+            { id: "funerarios", title: "Servicios Funerarios", icon: "heart", desc: "Atención inmediata las 24 horas en todo Huaral." },
+            { id: "crematorio", title: "Crematorio Ecológico", icon: "flower-2", desc: "Procesos respetuosos con entrega de urna." },
+            { id: "prevision", title: "Planes de Previsión", icon: "shield-check", desc: "Proteja a su familia hoy para el futuro." },
+            { id: "floristeria", title: "Floristería Premium", icon: "flower-2", desc: "Arreglos florales solemnes y personalizados." },
+            { id: "traslados", title: "Traslados Nacionales", icon: "truck", desc: "Gestión logística desde cualquier parte del Perú." },
+            { id: "velacion", title: "Salas de Velación", icon: "map-pin", desc: "Ambientes privados y confortables." }
         ];
 
         const servicesContainer = document.getElementById('services-grid');
         servicesData.forEach(s => {
             const el = document.createElement('div');
-            el.className = "group relative bg-slate-900 border border-white/5 p-10 hover:border-amber-500/50 transition-all duration-500 hover:-translate-y-2 rounded-sm";
+            el.className = "group relative bg-slate-900 border border-white/5 p-10 hover:border-amber-500/50 transition-all duration-500 hover:-translate-y-2 rounded-sm flex flex-col";
+            
+            // Si es Servicios Funerarios, añadir botón especial
+            let actionHtml = '';
+            if (s.id === 'funerarios') {
+                actionHtml = `<button onclick="openPlansModal()" class="mt-auto pt-6 text-amber-500 font-bold uppercase tracking-widest text-[10px] flex items-center gap-2 group-hover:text-white transition-colors">VER PLANES <i data-lucide="arrow-right" class="w-4 h-4"></i></button>`;
+            } else {
+                actionHtml = `<div class="w-12 h-[1px] bg-slate-700 group-hover:w-full group-hover:bg-amber-500 transition-all duration-500 mt-auto"></div>`;
+            }
+
             el.innerHTML = `
                 <div class="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center text-amber-500 mb-8 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500 shadow-lg group-hover:shadow-amber-900/50">
                     <i data-lucide="${s.icon}" class="w-8 h-8"></i>
                 </div>
                 <h4 class="text-2xl font-serif mb-4 text-white group-hover:text-amber-400 transition-colors">${s.title}</h4>
                 <p class="text-slate-400 text-sm leading-relaxed mb-8 font-light">${s.desc}</p>
-                <div class="w-12 h-[1px] bg-slate-700 group-hover:w-full group-hover:bg-amber-500 transition-all duration-500"></div>
+                ${actionHtml}
             `;
             servicesContainer.appendChild(el);
         });
 
         lucide.createIcons();
 
+        // --- SCROLL HEADER ---
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -551,6 +605,7 @@
             }
         });
 
+        // --- MOBILE MENU ---
         const menuBtn = document.getElementById('mobile-menu-btn');
         const menuOverlay = document.getElementById('mobile-menu-overlay');
         const menuLinks = document.querySelectorAll('.mobile-link');
@@ -577,6 +632,7 @@
             });
         });
 
+        // --- MODAL GENERICS ---
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
         }
@@ -585,6 +641,40 @@
             document.getElementById(id).classList.add('hidden');
         }
 
+        // --- PLANS MODAL LOGIC ---
+        function openPlansModal() {
+            document.getElementById('plansModal').classList.remove('hidden');
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePlansModal() {
+            document.getElementById('plansModal').classList.add('hidden');
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        function switchTab(tabId) {
+            // Update Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-amber-600', 'border-b-2', 'border-amber-600');
+                btn.classList.add('text-slate-400');
+            });
+            const activeBtn = document.getElementById('tab-' + tabId);
+            activeBtn.classList.add('active', 'text-amber-600', 'border-b-2', 'border-amber-600');
+            activeBtn.classList.remove('text-slate-400');
+
+            // Update Content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('grid'); // Remove grid display
+            });
+            const activeContent = document.getElementById('content-' + tabId);
+            activeContent.classList.remove('hidden');
+            activeContent.classList.add('grid'); // Add grid display back
+        }
+
+        // --- GEMINI & CHAT LOGIC (Same as before) ---
         async function callGemini(prompt, systemInstruction) {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = {
@@ -688,8 +778,6 @@
 
         // --- CONNECTIVITY CHECK ---
         window.onload = function() {
-            // Verificación simple: Si Tailwind no carga, el body no tendrá estilos aplicados correctamente.
-            // Una forma robusta es verificar si una clase de utilidad está aplicada.
             const testElement = document.createElement('div');
             testElement.className = 'hidden';
             document.body.appendChild(testElement);
