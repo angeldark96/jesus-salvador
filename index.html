@@ -596,7 +596,7 @@
         </div>
     </div>
 
-    <!-- MODAL FLORISTERÍA (NUEVO - Fondo Claro) -->
+    <!-- MODAL FLORISTERÍA (NUEVO - Fondo Claro y Estilo Script) -->
     <div id="floristModal" class="fixed inset-0 z-[100] bg-slate-50 hidden overflow-y-auto animate-fade-in">
         <button onclick="closeFloristModal()" class="fixed top-6 right-6 z-50 p-3 bg-white rounded-full shadow-lg text-slate-800 hover:text-amber-600 transition-colors">
             <i data-lucide="x" class="w-6 h-6"></i>
@@ -625,6 +625,12 @@
                 <div id="floristCarousel" class="scrolling-wrapper flex gap-6 overflow-x-auto pb-10 snap-x snap-mandatory">
                     <!-- Cards serán inyectadas por JS -->
                 </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contacto" onclick="closeFloristModal()" class="inline-block bg-amber-600 text-white px-10 py-4 font-bold uppercase tracking-widest text-xs hover:bg-amber-700 transition-colors shadow-lg shadow-amber-600/20">
+                    COTIZAR AHORA
+                </a>
             </div>
         </div>
     </div>
@@ -673,12 +679,12 @@
 
         // --- FLORIST CAROUSEL DATA (UPDATED STYLES) ---
         const floristItems = [
-            { title: "Coronas Fúnebres", img: "https://images.unsplash.com/photo-1596706939989-b003a097d74b?q=80&w=600" }, // Placeholder
+            { title: "Coronas Fúnebres", img: "https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=600" }, // Placeholder
             { title: "Lágrimas", img: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=600" },
-            { title: "Lágrimas en Pedestal", img: "https://images.unsplash.com/photo-1563241527-3004b7be0fee?q=80&w=600" },
-            { title: "Manto Floral", img: "https://images.unsplash.com/photo-1605218427368-35b88d3d9508?q=80&w=600" },
+            { title: "Lágrimas en Pedestal", img: "https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=600" },
+            { title: "Manto Floral", img: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=600" },
             { title: "Cruces", img: "https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=600" },
-            { title: "Corazones", img: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=600" }
+            { title: "Corazones", img: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=600" }
         ];
 
         const carousel = document.getElementById('floristCarousel');
@@ -689,7 +695,7 @@
                 <img src="${item.img}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0" alt="${item.title}">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 
-                <!-- Nombre alineado a la izquierda, fondo oscuro y letras mayúsculas -->
+                <!-- Nombre alineado a la izquierda, fondo oscuro y letras ESTILO SCRIPT (Great Vibes) -->
                 <div class="absolute bottom-8 left-0">
                     <div class="bg-slate-950 text-white px-6 py-2 font-serif text-lg tracking-wide shadow-md">
                         ${item.title}
