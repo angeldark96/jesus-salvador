@@ -58,8 +58,9 @@
 <body class="bg-slate-50 font-sans text-slate-900 overflow-x-hidden">
 
     <!-- BOTONES FLOTANTES -->
+    <!-- Ajustado margen derecho en desktop (lg:right-10 xl:right-16) para dar más espacio -->
     <div class="fixed bottom-6 right-6 lg:right-10 xl:right-16 z-50 flex flex-col gap-4 items-end animate-fade-in">
-        <!-- 1. LLÁMANOS 24/7 (SOLO MÓVIL) -->
+        <!-- 1. EMERGENCIA 24/7 (SOLO MÓVIL) -->
         <a href="tel:+51999999999" class="lg:hidden flex items-center gap-3 bg-red-700 text-white px-6 py-4 rounded-full shadow-2xl hover:bg-red-800 transition-all hover:-translate-y-1 transform border-2 border-red-600 animate-pulse">
             <i data-lucide="phone" class="w-5 h-5"></i>
             <span class="font-bold text-sm tracking-wide">LLÁMANOS 24/7</span>
@@ -76,6 +77,7 @@
 
     <!-- HEADER -->
     <header id="main-header" class="fixed top-0 w-full z-[60] transition-all duration-500 bg-transparent py-4 lg:py-8">
+        <!-- Aumentado max-w y px para dar más espacio lateral al logo -->
         <div class="container mx-auto px-6 lg:px-10 xl:px-16 flex justify-between items-center max-w-[1400px]">
             <!-- Logo -->
             <div class="flex items-center gap-3 lg:gap-4 group cursor-pointer pl-0 lg:pl-2">
@@ -112,34 +114,25 @@
     </div>
 
     <!-- HERO SECTION -->
-    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden bg-slate-950">
-        <!-- CONTENEDOR FONDO MIXTO (Video + Imagen de Respaldo) -->
-        <div class="absolute inset-0 -z-10 overflow-hidden">
-            <!-- 1. IMAGEN DE RESPALDO (Se ve si el video falla o carga lento) -->
-            <img src="https://images.unsplash.com/photo-1595856719597-94d344837a77?q=80&w=2000&auto=format&fit=crop" 
-                 class="absolute inset-0 w-full h-full object-cover opacity-80" 
-                 alt="Fondo de respaldo">
-
-            <!-- 2. VIDEO DE YOUTUBE DE FONDO -->
-            <!-- Pointer events none para que no interfiera con clics -->
-            <div class="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                <iframe 
-                    class="w-full h-full"
-                    src="https://www.youtube.com/embed/ahWhgBlQrq4?autoplay=1&mute=1&controls=0&loop=1&playlist=ahWhgBlQrq4&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1" 
-                    title="Video Banner Funeraria"
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen
-                    style="pointer-events: none;">
-                </iframe>
-            </div>
-
-            <!-- 3. CAPAS DE OSCURECIMIENTO (Encima del video/imagen para que el texto resalte) -->
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/40 to-slate-950 z-0"></div>
-            <div class="absolute inset-0 bg-slate-950/20 backdrop-brightness-90 z-0"></div>
+    <!-- CORRECCIÓN: Eliminado 'bg-slate-950' para evitar que tape la imagen -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
+        
+        <!-- CORRECCIÓN: Cambiado '-z-10' a 'z-0' para asegurar que esté en el flujo visual correcto -->
+        <div class="absolute inset-0 z-0">
+            <!-- IMAGEN DE BANNER -->
+            <!-- Se añadió onerror para cargar una imagen de respaldo si la de Imgur falla -->
+            <img 
+                src="https://i.imgur.com/v3I4hFK.jpeg" 
+                class="w-full h-full object-cover animate-slow-zoom opacity-90" 
+                alt="Funeraria Jesús Salvador Huaral - Servicio Solemne"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1595856719597-94d344837a77?q=80&w=2000&auto=format&fit=crop';"
+            >
+            
+            <!-- Capas de oscurecimiento -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/50 to-slate-950"></div>
+            <div class="absolute inset-0 bg-slate-950/30 backdrop-brightness-75"></div>
         </div>
 
-        <!-- CONTENIDO PRINCIPAL -->
         <!-- Ajustado: lg:pt-32 para centrar verticalmente restando la altura del header -->
         <div class="container mx-auto px-6 lg:px-10 xl:px-16 flex flex-col justify-center h-full max-w-[1400px] pt-24 lg:pt-32 relative z-10">
             <div class="max-w-5xl mx-auto lg:mx-0 pl-0 lg:pl-2 text-center lg:text-left">
@@ -396,8 +389,7 @@
                 <div class="space-y-6">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center rounded-sm shadow-lg shadow-amber-900/40">
-                            <!-- REEMPLAZO LOGO FOOTER -->
-                            <img src="https://i.imgur.com/cugDYsQ.png" alt="Logo Footer" class="w-full h-full object-contain brightness-110 drop-shadow-md">
+                            <span class="text-white font-serif font-bold text-xl">J</span>
                         </div>
                         <div>
                             <span class="font-serif text-xl tracking-widest font-bold text-white block leading-none">JESÚS SALVADOR</span>
